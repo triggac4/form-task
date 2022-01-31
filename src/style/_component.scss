@@ -1,0 +1,36 @@
+/////////////btn///////////////////
+///////////////////////////////////
+.btn {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
+
+/////////////search-bar/////////
+///////////////////////////////////
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem;
+    height: 3rem;
+    border: 1px solid $color-grey-light;
+
+    &:focus-within {
+        border: 1px solid $color-grey;
+    }
+    &__textfield {
+        border: none;
+        width: 100%;
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+
+    &__img {
+        height: 2rem;
+        width: auto;
+    }
+}

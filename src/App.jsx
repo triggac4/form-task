@@ -1,10 +1,13 @@
 import "./style/App.scss";
+import FilterSection from "./layout/filter_section";
 
 function App() {
     return (
         <div className="body">
             <div className="layout">
-                <section className="filters"></section>
+                <section className="filters">
+                    <FilterSection />
+                </section>
                 <main className="templates"></main>
             </div>
         </div>

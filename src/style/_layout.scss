@@ -13,10 +13,9 @@
 .filters {
     grid-column: main-start/main-end;
     grid-row: 1/2;
-    background-color: red;
 }
-.template {
+
+.templates {
     grid-column: main-start/main-end;
     grid-row: 2/3;
-    background-color: green;
 }
