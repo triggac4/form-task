@@ -1,0 +1,22 @@
+.layout {
+    max-width: 140rem;
+    display: grid;
+    margin: 0 auto;
+
+    grid-template-columns:
+        [page-start] minmax(4rem, 1fr)
+        [main-start] repeat(8, 1fr)
+        [main-end] minmax(4rem, 1fr) [page-end];
+
+    grid-template-rows: min-content min-content;
+}
+.filters {
+    grid-column: main-start/main-end;
+    grid-row: 1/2;
+    background-color: red;
+}
+.template {
+    grid-column: main-start/main-end;
+    grid-row: 2/3;
+    background-color: green;
+}
