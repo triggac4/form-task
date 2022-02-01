@@ -12,13 +12,13 @@
 .search-bar {
     display: flex;
     align-items: center;
+    width: 25rem;
     justify-content: space-between;
     padding: 0.3rem;
     height: 3rem;
-    border: 1px solid $color-grey-light;
-
+    border: $input-field-borders;
     &:focus-within {
-        border: 1px solid $color-grey;
+        border: $input-field-focus-border;
     }
     &__textfield {
         border: none;
@@ -32,5 +32,71 @@
     &__img {
         height: 2rem;
         width: auto;
+    }
+}
+
+/////////////drop-bar////////////////
+/////////////////////////////////////
+.drop-bar {
+    position: relative;
+    width: 15rem;
+    &__main {
+        width: 100%;
+        height: 3rem;
+        outline: none;
+        border: $input-field-borders;
+
+        &:focus-within {
+            border: $input-field-focus-border;
+        }
+    }
+    &__label {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        z-index: 5;
+        transform: translateY(-50%);
+        background-color: $color-white;
+        padding: 0.2rem;
+    }
+}
+
+/////////////////date-picker///////////////////
+///////////////////////////////////////////////
+
+.date-picker {
+    position: relative;
+    width: 15rem;
+
+    &__main {
+        width: 100%;
+        height: 3rem;
+        outline: none;
+        border: $input-field-borders;
+
+        &:focus-within {
+            border: $input-field-focus-border;
+        }
+
+        &::-webkit-calendar-picker-indicator {
+            color: rgba(0, 0, 0, 0);
+            opacity: 1;
+            background-image: url(../assets//svg/datepicker.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+    &__label {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        z-index: 5;
+        transform: translateY(-50%);
+        background-color: $color-white;
+        padding: 0.2rem;
     }
 }

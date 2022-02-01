@@ -2,19 +2,30 @@ import React from "react";
 
 const DropBar = ({ onChange, name, options }) => {
     function change(e) {
-        onChange(e.selectedIndex);
+        //e.target.value
+        onChange(e);
     }
     const OptionsJsx = options.map((e, index) => {
         return (
-            <option value={e} className="drop-bar__option">
+            <option key={index} value={e} className="drop-bar__option">
                 {e}
             </option>
         );
     });
     return (
-        <select className="drop-bar" name={name} onChange={change}>
-            {OptionsJsx}
-        </select>
+        <div className="drop-bar input-padding">
+            <label className="drop-bar__label" htmlFor={name}>
+                {name}
+            </label>
+            <select
+                id={name}
+                className="drop-bar__main"
+                name={name}
+                onChange={change}
+            >
+                {OptionsJsx}
+            </select>
+        </div>
     );
 };
 
