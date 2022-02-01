@@ -15,7 +15,7 @@
     width: 25rem;
     justify-content: space-between;
     padding: 0.3rem;
-    height: 3rem;
+    height: 4rem;
     border: $input-field-borders;
     &:focus-within {
         border: $input-field-focus-border;
@@ -42,7 +42,8 @@
     width: 15rem;
     &__main {
         width: 100%;
-        height: 3rem;
+
+        height: 4rem;
         outline: none;
         border: $input-field-borders;
 
@@ -71,7 +72,7 @@
 
     &__main {
         width: 100%;
-        height: 3rem;
+        height: 4rem;
         outline: none;
         border: $input-field-borders;
 
@@ -98,5 +99,38 @@
         transform: translateY(-50%);
         background-color: $color-white;
         padding: 0.2rem;
+    }
+}
+
+////////////////////note-file/////////////////
+///////////////////////////////////////////////
+
+.note-file {
+    background-color: $color-note-color;
+    padding: 1rem 0;
+}
+
+////////////////Template component//////////////
+////////////////////////////////////////////////
+
+.template-component {
+    display: flex;
+    flex-direction: column;
+    height: 25rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    box-shadow: 1rem 1rem 5rem $color-grey-light-lighter;
+    &__paragraph {
+        padding: 1rem;
+    }
+    &__topic {
+        padding: 3rem 1rem 0 1rem;
+    }
+    &__footer {
+        color: $color-light-green;
+        width: 100%;
+        padding: 1rem;
+        background-color: #f9f9f9;
+        justify-self: flex-end;
     }
 }

@@ -1,6 +1,6 @@
 import "./style/App.scss";
 import FilterSection from "./layout/filter_section";
-
+import TemplateSection from "./layout/template-section";
 function App() {
     return (
         <div className="body">
@@ -8,7 +8,9 @@ function App() {
                 <section className="filters">
                     <FilterSection />
                 </section>
-                <main className="templates"></main>
+                <main className="templates">
+                    <TemplateSection />
+                </main>
             </div>
         </div>
     );
