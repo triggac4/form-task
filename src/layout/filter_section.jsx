@@ -3,6 +3,7 @@ import SearchBar from "../components/search_bar";
 import DropBar from "../components/drop_bar";
 import DatePicker from "../components/date-picker";
 import NoteFile from "../components/note_file";
+
 const FilterSection = () => {
     return (
         <div className="filter-section">
