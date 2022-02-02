@@ -116,7 +116,7 @@
 .template-component {
     display: flex;
     flex-direction: column;
-    height: 25rem;
+    height: 20rem;
     align-items: flex-start;
     justify-content: space-between;
     box-shadow: 1rem 1rem 5rem $color-grey-light-lighter;
@@ -132,5 +132,26 @@
         padding: 1rem;
         background-color: #f9f9f9;
         justify-self: flex-end;
+    }
+}
+
+//////////////template-section///////////
+////////////////////////////////////////
+.template-section {
+    &__amount {
+        color: $color-grey;
+    }
+    &__btn-img {
+        display: inline-block;
+    }
+    .next {
+        display: flex;
+        align-items: center;
+        column-gap: 1rem;
+    }
+    &__page span {
+        display: inline-block;
+        border: 1px solid $color-black;
+        padding: 0.3rem 0.5rem;
     }
 }
