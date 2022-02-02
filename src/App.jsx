@@ -1,6 +1,7 @@
 import "./style/App.scss";
 import FilterSection from "./layout/filter_section";
 import TemplateSection from "./layout/template-section";
+
 function App() {
     return (
         <div className="body">

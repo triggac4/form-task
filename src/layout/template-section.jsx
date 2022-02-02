@@ -16,7 +16,7 @@ const TemplateSection = () => {
             />
         );
     }
-    console.log(templates);
+
     return (
         <div className="template-section">
             <div className="template-section__top">
