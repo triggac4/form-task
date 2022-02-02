@@ -1,7 +1,12 @@
 const initialState = {
     All_items: [],
     sorted: [],
-    current_page: 1,
+    pagination: {
+        current_page: 1,
+        start_index: 0,
+        end_index: 0,
+        total_pages: 0,
+    },
 };
 
 console.log(initialState);
@@ -13,21 +18,20 @@ const getTemplateReducers = (state = initialState, action) => {
     switch (action.type) {
         case GET_TEMPLATES_SUCCESS:
             return {
-                ...state,
                 All_items: action.payload,
                 sorted: action.payload,
-                current_page: 1,
+                pagination: action.pagination,
             };
         case GET_SORTED:
             return {
                 ...state,
                 sorted: action.payload,
-                current_page: 1,
+                pagination: action.pagination,
             };
         case CHANGE_PAGE:
             return {
                 ...state,
-                current_page: action.payload,
+                pagination: action.pagination,
             };
 
         default:
