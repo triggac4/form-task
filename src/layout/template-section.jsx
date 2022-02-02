@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import TemplateComponent from "../components/template_component";
+import TemplatesClass from "../utils/templates";
 import nextImg from "../assets/svg/next.svg";
+import { getSorted } from "../redux/actions";
 
 const TemplateSection = () => {
     const templates = [];
@@ -16,6 +19,27 @@ const TemplateSection = () => {
             />
         );
     }
+    const dis = useDispatch();
+    const val = useSelector((state) => state.sorted);
+    async function dor() {
+        let result = await TemplatesClass.demoTemplates();
+        console.log(result.length);
+        let result2 = TemplatesClass.filterTemplates(result, {
+            name: "ab",
+        });
+
+        dis(getSorted(result2));
+    }
+    dor();
+    const change = val.map((element, i) => {
+        return (
+            <TemplateComponent
+                topic={element.name}
+                paragraph={element.description}
+                key={i}
+            />
+        );
+    });
 
     return (
         <div className="template-section">
@@ -25,7 +49,7 @@ const TemplateSection = () => {
                     {`${templates.length} template(s)`}{" "}
                 </span>
             </div>
-            {templates}
+            {change}
             <div className="template-section__foot">
                 <button className="template-section__btn previous btn">
                     previous
