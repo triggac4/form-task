@@ -1,4 +1,4 @@
-import { getSorted, getTemplateSuccess } from "../redux/actions";
+import { getSorted, getTemplateSuccess, loading } from "../redux/actions";
 
 class TemplatesClass {
     constructor(name, description, created, category, link) {
@@ -25,6 +25,7 @@ class TemplatesClass {
     }
 
     static filterTemplates(templates, dispatch, { created, category, name }) {
+        dispatch(loading(true));
         const filtered = templates.filter((tempt) => {
             let checkName = true;
             let checkCategories = true;
@@ -52,11 +53,12 @@ class TemplatesClass {
         dispatch(
             getSorted(filtered, TemplatesClass.numberOfPages(filtered, 12, 1))
         );
+        dispatch(loading(false));
         return filtered;
     }
-    static async demoTemplates(dispatch, setLoading) {
+    static async demoTemplates(dispatch) {
         try {
-            setLoading(true);
+            dispatch(loading(true));
             const response = await fetch(
                 "https://front-end-task-dot-fpls-dev.uc.r.appspot.com/api/v1/public/task_templates"
             );
@@ -68,7 +70,7 @@ class TemplatesClass {
             console.log(e);
             return [];
         } finally {
-            setLoading(false);
+            dispatch(loading(false));
         }
     }
 }

@@ -1,4 +1,9 @@
-import { GET_TEMPLATES_SUCCESS, GET_SORTED, CHANGE_PAGE } from "../reducers";
+import {
+    GET_TEMPLATES_SUCCESS,
+    GET_SORTED,
+    CHANGE_PAGE,
+    LOADING,
+} from "../reducers";
 
 export const getTemplateSuccess = (payload, pagination) => {
     return {
@@ -20,5 +25,11 @@ export const changePage = (pagination) => {
     return {
         type: CHANGE_PAGE,
         pagination,
+    };
+};
+export const loading = (payload) => {
+    return {
+        type: LOADING,
+        payload,
     };
 };
