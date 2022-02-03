@@ -50,7 +50,7 @@ const FilterSection = () => {
                     onChange={onChange}
                     options={["first", "second", "third"]}
                 />
-                <DatePicker name="createdzzz" onChange={onChange} />
+                <DatePicker name="created" onChange={onChange} />
             </div>
             <div className="filter-section__note">
                 <NoteFile />
