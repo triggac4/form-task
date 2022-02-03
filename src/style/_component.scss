@@ -120,6 +120,7 @@
     align-items: flex-start;
     justify-content: space-between;
     box-shadow: 1rem 1rem 5rem $color-grey-light-lighter;
+    transform: scale(1);
     &__paragraph {
         padding: 1rem;
     }
@@ -134,7 +135,20 @@
         justify-self: flex-end;
     }
 }
-
+.forLoading {
+    animation: loading 2s ease-in-out infinite;
+}
+@keyframes loading {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 //////////////template-section///////////
 ////////////////////////////////////////
 .template-section {

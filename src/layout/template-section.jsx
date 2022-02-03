@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import TemplateComponent from "../components/template_component";
@@ -6,12 +6,19 @@ import TemplatesClass from "../utils/templates";
 import nextImg from "../assets/svg/next.svg";
 import { changePage } from "../redux/actions";
 const TemplateSection = () => {
+    const [loading, setLoading] = useState(false);
     const sort = useSelector((state) => state);
     const pagination = { ...sort.pagination };
     const dispatchPagination = useDispatch();
     const dispatchGetTempt = useDispatch();
+    let temporary = [];
+
+    for (let x = 0; x < 12; x++) {
+        temporary.push(<TemplateComponent forLoading key={x} />);
+    }
+
     useEffect(() => {
-        TemplatesClass.demoTemplates(dispatchGetTempt);
+        TemplatesClass.demoTemplates(dispatchGetTempt, setLoading);
     }, [dispatchGetTempt]);
 
     const change = sort.sorted
@@ -66,7 +73,7 @@ const TemplateSection = () => {
                     {`${sort.sorted.length} template(s)`}{" "}
                 </span>
             </div>
-            {change}
+            {loading ? temporary : change}
             <div className="template-section__foot">
                 <button
                     className="template-section__btn previous btn"

@@ -1,9 +1,9 @@
 import React from "react";
 import searchLogo from "../assets/svg/search.svg";
 
-const SearchBar = ({ onChange, onClick }) => {
+const SearchBar = ({ onChange, onClick, name }) => {
     function change(e) {
-        onChange(e.target.value);
+        onChange(e);
     }
     return (
         <div className="search-bar">
@@ -12,6 +12,7 @@ const SearchBar = ({ onChange, onClick }) => {
                 className="search-bar__textfield"
                 placeholder="search template"
                 onChange={change}
+                name={name}
             />
             <button className="search-bar__button btn" onClick={onClick}>
                 <img
