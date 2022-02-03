@@ -5,6 +5,12 @@ const SearchBar = ({ onChange, onClick, name }) => {
     function change(e) {
         onChange(e);
     }
+    function keydown(e) {
+        if (e.key === "Enter") {
+            onChange(e);
+            onClick();
+        }
+    }
     return (
         <div className="search-bar">
             <input
@@ -13,6 +19,7 @@ const SearchBar = ({ onChange, onClick, name }) => {
                 placeholder="search template"
                 onChange={change}
                 name={name}
+                onKeyPress={keydown}
             />
             <button className="search-bar__button btn" onClick={onClick}>
                 <img
