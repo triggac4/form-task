@@ -11,18 +11,28 @@
         [main-end] minmax(4rem, 1fr) [page-end];
 
     grid-template-rows: min-content 1fr;
-}
-@media screen and (max-width: $mediaQuery-large-phone) {
-    .layout {
-        grid-template-columns:
-            [page-start] minmax(4rem, 1fr)
-            [main-start] repeat(15, 1fr)
-            [main-end] minmax(4rem, 1fr) [page-end];
+    @media screen and (max-width: $mediaQuery-phone) {
+        & {
+            grid-template-columns:
+                [page-start] minmax(2rem, 1fr)
+                [main-start] repeat(8, 1fr)
+                [main-end] minmax(2rem, 1fr) [page-end];
+        }
+    }
+
+    @media screen and (max-width: $mediaQuery-small-phone) {
+        & {
+            grid-template-columns:
+                [page-start] minmax(0, 1fr)
+                [main-start] repeat(8, 1fr)
+                [main-end] minmax(0, 1fr) [page-end];
+        }
     }
 }
 .filters {
     margin-top: 5rem;
     grid-column: main-start/main-end;
+    display: flex;
     grid-row: 1/2;
 }
 
@@ -35,49 +45,61 @@
 ///////////////////filter-section///////////
 ////////////////////////////////////////////
 .filter-section {
+    width: 100%;
+    grid-column: 1/-1;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: min-content min-content;
     row-gap: 8rem;
 
     span {
         display: block;
-        width: 10rem;
+        width: 5rem;
         align-self: center;
         color: $color-grey-light-dark;
     }
     &__drop-bars {
-        grid-column: 5/-1;
+        grid-column: 2/-1;
         display: flex;
         column-gap: 1rem;
+
+        @media screen and (max-width: $mediaQuery-tab) {
+            & {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+            span {
+                display: none;
+            }
+        }
     }
     &__note {
-        grid-column: 1/-1;
-
+        grid-column: 1 / -1;
+        align-self: flex-start;
         .note-file {
             display: flex;
             align-items: center;
             column-gap: 1rem;
             justify-content: center;
+
+            &__word {
+                overflow-wrap: break-word;
+            }
         }
     }
-    @media screen and (max-width: $mediaQuery-tab-large) {
-        &__drop-bars {
-            grid-column: 4/-1;
-        }
-    }
-    @media screen and (max-width: $mediaQuery-tab-small) {
-        &__drop-bars {
-            grid-column: 3/-1;
-        }
-    }
-    @media screen and (max-width: $mediaQuery-tab-smallest) {
+    // @media screen and (max-width: $mediaQuery-tab-large) {
+    // }
+    @media screen and (max-width: $mediaQuery-tab) {
         & {
+            grid-template-columns: 1fr;
             grid-template-rows: repeat(3, min-content);
             gap: 4rem;
         }
         &__drop-bars {
-            grid-column: 1/-1;
+            grid-column: 1;
+            grid-row: 2/3;
+            justify-self: center;
         }
     }
 }

@@ -7,7 +7,7 @@ const NoteFile = () => {
             <img src={noteImg} alt="note" />
             <p className="note-file__word">
                 Tada! Get started with a free template. Can’t find what you are
-                looking for? Search from the 1000+ available templates
+                looking for? Search from the 1000+available templates
             </p>
         </div>
     );
