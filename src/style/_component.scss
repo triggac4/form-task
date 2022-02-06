@@ -40,9 +40,10 @@
 .drop-bar {
     position: relative;
     width: 15rem;
+    background-color: $color-white;
     &__main {
         width: 100%;
-
+        background-color: $color-white;
         height: 4rem;
         outline: none;
         border: $input-field-borders;
@@ -69,8 +70,9 @@
 .date-picker {
     position: relative;
     width: 15rem;
-
+    background-color: $color-white;
     &__main {
+        background-color: $color-white;
         width: 100%;
         height: 4rem;
         outline: none;
@@ -168,4 +170,13 @@
         border: 1px solid $color-black;
         padding: 0.3rem 0.5rem;
     }
+}
+
+//////////error btn/////////
+////////////////////////////
+
+.error {
+    background-color: $color-light-green;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }

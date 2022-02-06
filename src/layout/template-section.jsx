@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import TemplateComponent from "../components/template_component";
@@ -6,18 +6,24 @@ import TemplatesClass from "../utils/templates";
 import nextImg from "../assets/svg/next.svg";
 import { changePage } from "../redux/actions";
 const TemplateSection = () => {
+    const [hasError, setError] = useState(false);
     const sort = useSelector((state) => state);
     const pagination = { ...sort.pagination };
     const dispatchPagination = useDispatch();
     const dispatchGetTempt = useDispatch();
-    let temporary = [];
 
+    let temporary = [];
     for (let x = 0; x < 12; x++) {
         temporary.push(<TemplateComponent forLoading key={x} />);
     }
 
+    async function fetchTemplate() {
+        if (!sort.loading) {
+            await TemplatesClass.demoTemplates(dispatchGetTempt, setError);
+        }
+    }
     useEffect(() => {
-        TemplatesClass.demoTemplates(dispatchGetTempt);
+        TemplatesClass.demoTemplates(dispatchGetTempt, setError);
     }, [dispatchGetTempt]);
 
     const change = sort.sorted
@@ -66,11 +72,29 @@ const TemplateSection = () => {
 
     return (
         <div className="template-section">
-            <div className="template-section__top">
-                <h5 className="template-section__category">all template</h5>
-                <span className="template-section__amount">
-                    {`${sort.sorted.length} template(s)`}{" "}
-                </span>
+            <div
+                className="template-section__top"
+                style={{
+                    justifyContent: `${hasError ? "center" : "space-between"}`,
+                }}
+            >
+                {hasError ? (
+                    <h3>
+                        So sorry something went wrong refresh screen or tap{" "}
+                        <button className="btn error" onClick={fetchTemplate}>
+                            here
+                        </button>
+                    </h3>
+                ) : (
+                    <>
+                        <h5 className="template-section__category">
+                            all template
+                        </h5>
+                        <span className="template-section__amount">
+                            {`${sort.sorted.length} template(s)`}{" "}
+                        </span>
+                    </>
+                )}
             </div>
             {sort.loading ? temporary : change}
             <div className="template-section__foot">

@@ -13,7 +13,7 @@ class TemplatesClass {
         const start = (currentPage - 1) * temptPerPage;
         const end =
             start + temptPerPage >= templates.length
-                ? -1
+                ? templates.length
                 : start + temptPerPage;
         const returnVal = {
             current_page: currentPage,
@@ -31,8 +31,9 @@ class TemplatesClass {
             let checkCategories = true;
             let checkCreated = true;
             if (name) {
-                name.trim();
-                checkName = tempt.name.includes(name);
+                let trimmed = name.trim();
+                const temptUpper = tempt.name.toUpperCase();
+                checkName = temptUpper.includes(trimmed.toUpperCase());
             }
             if (category) {
                 if (category.toUpperCase() === "ALL") {
@@ -56,18 +57,20 @@ class TemplatesClass {
         dispatch(loading(false));
         return filtered;
     }
-    static async demoTemplates(dispatch) {
+    static async demoTemplates(dispatch, setError) {
         try {
             dispatch(loading(true));
             const response = await fetch(
                 "https://front-end-task-dot-fpls-dev.uc.r.appspot.com/api/v1/public/task_templates"
             );
+
             const templateList = await response.json();
             const paginate = TemplatesClass.numberOfPages(templateList, 12, 1);
             dispatch(getTemplateSuccess(templateList, paginate));
+            setError(false);
             return templateList;
         } catch (e) {
-            console.log(e);
+            setError(true);
             return [];
         } finally {
             dispatch(loading(false));
